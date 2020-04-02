@@ -1,4 +1,6 @@
-const Categorie = require('../models/Categorie')
+import * as Yup from 'yup'
+
+import Categorie from '../models/Categorie'
 
 class CategorieController {
     async index(req, res) {
@@ -18,6 +20,14 @@ class CategorieController {
     }
 
     async store(req, res) {
+        const schema = Yup.object().shape({
+            name: Yup.string().required()
+        })
+
+        if(!(await schema.isValid(req.body))){
+            return res.status(401).json({error: 'Erro ao validar dados'})
+        }
+
         const { name } = req.body
         const categorie = await Categorie.create({ name })
         return res.json(categorie)
@@ -50,4 +60,4 @@ class CategorieController {
 
 }
 
-module.exports = new CategorieController()
+export default new CategorieController()
