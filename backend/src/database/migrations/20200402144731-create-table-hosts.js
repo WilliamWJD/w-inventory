@@ -39,6 +39,10 @@ module.exports = {
           },
           allowNull:false
         },
+        image_path:{
+          type:Sequelize.STRING,
+          allowNull:true
+        },
         status:{
           type:Sequelize.BOOLEAN,
           allowNull:false
