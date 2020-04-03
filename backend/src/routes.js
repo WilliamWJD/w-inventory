@@ -18,6 +18,10 @@ routes.get('/departments/:department_id', DepartmentController.show)
 routes.put('/departments/:department_id', DepartmentController.update)
 routes.delete('/departments/:department_id', DepartmentController.delete)
 
-routes.post('/hosts/:department_id', HostController.store)
+routes.get('/hosts', HostController.index)
+routes.get('/hosts/:host_id', HostController.show)
+routes.post('/hosts', HostController.store)
+routes.put('/hosts/:host_id', HostController.update)
+routes.delete('/hosts/:host_id', HostController.delete)
 
 module.exports = routes
