@@ -1,10 +1,11 @@
-const Sequelize = require('sequelize')
+import Sequelize from 'sequelize'
 
-const dbConfig = require('../config/database')
-const Categorie = require('../app/models/Categorie')
-const Department = require('../app/models/Department')
+import dbConfig from '../config/database'
+import Categorie from '../app/models/Categorie'
+import Department from '../app/models/Department'
+import Host from '../app/models/Host'
 
-const models = [Categorie, Department]
+const models = [Categorie, Department, Host]
 
 class Database{
     constructor(){
@@ -17,4 +18,4 @@ class Database{
     }
 }
 
-module.exports = new Database()
+export default new Database()

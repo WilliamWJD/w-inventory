@@ -13,7 +13,7 @@ module.exports = {
         },
         service_tag:{
           type:Sequelize.STRING,
-          allowNull:false
+          allowNull:true
         },
         ram:{
           type:Sequelize.STRING,
@@ -25,7 +25,7 @@ module.exports = {
         },
         serial:{
           type:Sequelize.STRING,
-          allowNull:false
+          allowNull:true
         },
         patrimony:{
           type:Sequelize.STRING,
@@ -37,6 +37,10 @@ module.exports = {
             model:'departments',
             key:'id'
           },
+          allowNull:false
+        },
+        status:{
+          type:Sequelize.BOOLEAN,
           allowNull:false
         },
         created_at:{
