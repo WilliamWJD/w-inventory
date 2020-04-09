@@ -10,6 +10,7 @@ class Host extends Sequelize.Model{
             serial:Sequelize.STRING,
             patrimony:Sequelize.STRING,
             department_id:Sequelize.INTEGER,
+            image_path:Sequelize.STRING,
             status:Sequelize.BOOLEAN
         },{
             sequelize,

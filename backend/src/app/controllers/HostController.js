@@ -16,6 +16,7 @@ class HostController{
     }
 
     async store(req, res){
+        const {filename} = req.file
         const {
             description,
             service_tag,
@@ -28,7 +29,15 @@ class HostController{
         } = req.body
 
         const host = await Host.create({
-            description, service_tag, ram, cpu, serial, patrimony, department_id, status
+            description, 
+            service_tag, 
+            ram, 
+            cpu, 
+            serial, 
+            patrimony, 
+            department_id,
+            image_path:filename,
+            status
         })
         return res.json(host)
     }
