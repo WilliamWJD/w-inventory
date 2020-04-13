@@ -1,4 +1,5 @@
 import Host from '../models/Host'
+import * as Yup from 'yup'
 
 class HostController{
     async index(req, res){
@@ -28,6 +29,18 @@ class HostController{
             department_id
         } = req.body
 
+        const schema = Yup.object().shape({
+            description: Yup.string().required(),
+            serial: Yup.string().required(),
+            patrimony: Yup.string().required(),
+            department_id: Yup.number().required(),
+            filename: Yup.string().required()
+        })
+
+        if(!(await schema.isValid(req.body))){
+            return res.status(401).json({ error: 'Schema is not validate' })
+        }
+
         const host = await Host.create({
             description, 
             service_tag, 
@@ -54,6 +67,18 @@ class HostController{
             status,
             department_id
         } = req.body
+
+        const schema = Yup.object().shape({
+            description: Yup.string().required(),
+            serial: Yup.string().required(),
+            patrimony: Yup.string().required(),
+            department_id: Yup.number().required(),
+            filename: Yup.string().required()
+        })
+
+        if(!(await schema.isValid(req.body))){
+            return res.status(401).json({ error: 'Schema is not validate' })
+        }
         
         const host = await Host.findByPk(host_id)
         if(!host){

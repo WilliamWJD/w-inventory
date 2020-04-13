@@ -36,6 +36,14 @@ class DepartmentController{
         const { department_id } = req.params
         const { name } = req.body
 
+        const schema = Yup.object().shape({
+            name: Yup.string().required()
+        })
+
+        if(!(await schema.isValid(req.body))){
+            return res.status(401).json({error: 'Erro ao validar dados'})
+        }
+
         const department = await Department.findByPk(department_id)
         if(!department){
             return res.status(401).json({error:'Departamento não encontrado'})

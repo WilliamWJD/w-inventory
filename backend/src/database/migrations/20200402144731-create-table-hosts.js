@@ -17,15 +17,15 @@ module.exports = {
         },
         ram:{
           type:Sequelize.STRING,
-          allowNull:false
+          allowNull:true
         },
         cpu:{
           type:Sequelize.STRING,
-          allowNull:false
+          allowNull:true
         },
         serial:{
           type:Sequelize.STRING,
-          allowNull:true
+          allowNull:false
         },
         patrimony:{
           type:Sequelize.STRING,
@@ -41,7 +41,7 @@ module.exports = {
         },
         image_path:{
           type:Sequelize.STRING,
-          allowNull:true
+          allowNull:false
         },
         status:{
           type:Sequelize.BOOLEAN,

@@ -37,6 +37,14 @@ class CategorieController {
         const { categorie_id } = req.params
         const { name } = req.body
 
+        const schema = Yup.object().shape({
+            name: Yup.string().required()
+        })
+
+        if(!(await schema.isValid(req.body))){
+            return res.status(401).json({error: 'Erro ao validar dados'})
+        }
+
         const categorie = await Categorie.findByPk(categorie_id)
         if(!categorie){
             return res.status(401).json({error:'Categoria não encontrada'})
